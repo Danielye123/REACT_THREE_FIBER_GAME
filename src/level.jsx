@@ -33,6 +33,7 @@ function BlockSpinner({ position = [0, 0, 0] }) {
                 scale={[4, 0.2, 4]}
                 receiveShadow
             />
+            <mesh geometry={boxGeometry} material={obstacleMaterial} scale={[ 3.5, 0.3, 0.3 ]} castShadow receiveShadow />
         </group>
     )
 }
