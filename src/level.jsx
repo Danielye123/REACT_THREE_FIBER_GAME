@@ -1,5 +1,6 @@
 import * as THREE from 'three'
 import { RigidBody } from '@react-three/rapier'
+import { useRef } from 'react'
 
 THREE.ColorManagement.legacyMode = false
 
@@ -25,6 +26,9 @@ function BlockStart({ position = [0, 0, 0] }) {
 }
 
 function BlockSpinner({ position = [0, 0, 0] }) {
+    
+    const obstacle = useRef()
+
     return (
         <group position={position}>
             <mesh
@@ -34,7 +38,7 @@ function BlockSpinner({ position = [0, 0, 0] }) {
                 scale={[4, 0.2, 4]}
                 receiveShadow
             />
-            <RigidBody type="kinematicPosition" position={[ 0, 0.3, 0]} restitution={.2} friction={0}>
+            <RigidBody ref={obstacle} type="kinematicPosition" position={[ 0, 0.3, 0]} restitution={.2} friction={0}>
                 <mesh geometry={boxGeometry} material={obstacleMaterial} scale={[ 3.5, 0.3, 0.3 ]} castShadow receiveShadow />
             </RigidBody>
         </group>
