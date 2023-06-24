@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import { RigidBody } from '@react-three/rapier'
 import { useRef } from 'react'
+import { useFrame } from '@react-three/fiber'
 
 THREE.ColorManagement.legacyMode = false
 
@@ -28,6 +29,10 @@ function BlockStart({ position = [0, 0, 0] }) {
 function BlockSpinner({ position = [0, 0, 0] }) {
     
     const obstacle = useRef()
+
+    useFrame((state) => {
+        const time = state.clock.getElapsedTime()
+    })
 
     return (
         <group position={position}>
